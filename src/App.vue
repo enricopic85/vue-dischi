@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <loader-app/>
-   <header-app/>
-   <main-app :discs="discs"/>
+    <loader-app v-if="loading"/>
+    <header-app v-if="loading===false"/>
+    <main-app :discs="discs" v-if="loading===false"/>
   </div>
 </template>
 
@@ -20,13 +20,18 @@ export default {
   },
   data(){
     return{
-      discs:[]
+      discs:[],
+      loading:true
     }
   },
    mounted(){
-    axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((response)=>{
+     setTimeout(() => {
+       axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((response)=>{
         this.discs=response.data.response;
+        this.loading=false;
     })
+     }, 5000);
+    
   }
 }
 </script>
