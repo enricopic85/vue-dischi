@@ -1,42 +1,40 @@
 <template>
-    <div class="card-app">
-        <div class="img">
-            <img :src="disco.poster" alt="">
+    <div>
+        <div class="card-app">
+            <div class="img">
+                <img :src="disco.poster" alt="">
+            </div>
+            <h4>{{disco.title}}</h4>
+            <p>{{disco.autor}}</p>
+            <p>{{disco.year}}</p>
         </div>
-        <h4>{{disco.title}}</h4>
-        <p>{{disco.autor}}</p>
-        <p>{{disco.year}}</p>
     </div>
 </template>
 
 <script>
 export default {
     props:{
-    disco:{
-       title:String,
-       poster:String,
-       autor:String,
-       year:String
-    }
-      
+    disco:Object
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .card-app{
+   div{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+        .card-app{
         width: 180px;
         height: 320px;
-        border: 1px solid black;
         display: flex;
         align-items: center;
         padding-top: 10px;
-        background-color: grey;
+        background-color: rgb(68, 59, 107);
         flex-direction: column;
         .img{
             width: 120px;
             height: 120px;
-            border: 1px solid black;
             img{
                 width: 100%;
             }
@@ -46,9 +44,11 @@ export default {
             color: white;
             padding-bottom: 20px;
             padding-top: 20px;
+            text-align: center;
         }
         p{
             color: white;
         }
     }
+   }
 </style>

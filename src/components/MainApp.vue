@@ -19,5 +19,11 @@ export default {
 <style lang="scss" scoped>
     .container-card{
         display: flex;
+        width: 1150px;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding-top: 50px;
+        gap: 30px;
+        justify-content: center;
     }
 </style>

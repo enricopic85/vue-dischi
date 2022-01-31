@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loader-app/>
    <header-app/>
    <main-app :discs="discs"/>
   </div>
@@ -9,11 +10,13 @@
 import HeaderApp from './components/HeaderApp.vue'
 import MainApp from './components/MainApp.vue'
 import axios from 'axios'
+import LoaderApp from './components/LoaderApp.vue'
 export default {
   name: 'App',
   components: {
     HeaderApp,
-    MainApp
+    MainApp,
+    LoaderApp
   },
   data(){
     return{
@@ -22,7 +25,7 @@ export default {
   },
    mounted(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((response)=>{
-        this.discs=response.data
+        this.discs=response.data.response;
     })
   }
 }
