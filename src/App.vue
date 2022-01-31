@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <loader-app v-if="loading"/>
-    <header-app v-if="loading===false"/>
-    <main-app :discs="discs" v-if="loading===false"/>
+    <header-app />
+    <main-app :discs="discs" />
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
         this.discs=response.data.response;
         this.loading=false;
     })
-     }, 5000);
+     }, 3000);
     
   }
 }
