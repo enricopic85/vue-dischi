@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <loader-app v-if="loading"/>
-    <header-app :years="years"/>
+    <header-app :years="years" @search="filterCards"/>
     <main-app :discs="discs"  />
   </div>
 </template>
@@ -22,7 +22,8 @@ export default {
     return{
       discs:[],
       loading:true,
-      years:[]
+      years:[],
+      yearsFiltered:[]
     }
   },
    mounted(){
@@ -38,6 +39,11 @@ export default {
     })
      }, 3000);
     
+  },
+  methods:{
+    filterCards(){
+
+    }
   }
 }
 </script>

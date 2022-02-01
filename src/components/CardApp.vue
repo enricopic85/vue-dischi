@@ -14,7 +14,8 @@
 <script>
 export default {
     props:{
-        disco:Object
+        disco:Object,
+        years:Array
     }
 }
 </script>

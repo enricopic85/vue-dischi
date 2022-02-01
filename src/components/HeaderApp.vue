@@ -1,9 +1,10 @@
 <template>
     <header>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png" alt="">
-         <select name="year" id="year" v-model="yearFilter">
+         <select name="year" id="year" >
             <option disabled value="">Scegli l'anno di pubblicazione</option>
-            <option v-for="(year,i) in years" :key="i">{{year}}</option>
+            <option value="all">All</option>
+            <option v-for="(year,i) in years" :key="i" :value=year @click="$emit('filter')">{{year}}</option>
         </select>
     </header>
 </template>
@@ -14,11 +15,6 @@ export default {
         discs:Array,
         years:Array
     },
-    data(){
-       return{
-           yearFilter:''
-       }
-   } 
 }
 </script>
 
