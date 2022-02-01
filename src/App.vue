@@ -2,7 +2,7 @@
   <div id="app">
     <loader-app v-if="loading"/>
     <header-app :years="years" @filter="filterCards"/>
-    <main-app :discs="discs"/>
+    <main-app :discs="discs" :valueUser="valueUser" />
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
       loading:true,
       years:[],
       yearsFiltered:[],
+      valueUser:0
     }
   },
    mounted(){
@@ -42,8 +43,8 @@ export default {
     
   },
   methods:{
-    filterCards(loading){
-      console.log(loading)
+    filterCards(selected){
+      this.valueUser=selected
     }
   }
 }

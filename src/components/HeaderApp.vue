@@ -1,10 +1,10 @@
 <template>
     <header>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png" alt="">
-         <select name="year" id="year" v-model="selected" >
+         <select name="year" id="year" v-model="selected"  @change="$emit('filter',selected)">
             <option disabled value="">Scegli l'anno di pubblicazione</option>
             <option value="all">All</option>
-            <option v-for="(year,i) in years" :key="i" :value=year @change="('filter',selected)" >{{year}} </option>
+            <option v-for="(year,i) in years" :key="i" :value=year >{{year}} </option>
         </select>
     </header>
 </template>

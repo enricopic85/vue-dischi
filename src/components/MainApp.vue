@@ -2,7 +2,8 @@
     <div class="container-card">
         <card-app v-for="(disc,i) in discs" 
         :key="i"
-        :disco="disc"/>
+        :disco="disc"
+        :valueUser="valueUser"/>
     </div>
 </template>
 
@@ -11,7 +12,8 @@ import CardApp from './CardApp.vue'
 export default {
   components: { CardApp },
     props:{
-        discs: Array
+        discs: Array,
+        valueUser:Number
     },
    
 }
