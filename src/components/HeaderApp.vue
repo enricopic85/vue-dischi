@@ -6,6 +6,11 @@
             <option value="all">All</option>
             <option v-for="(year,i) in years" :key="i" :value=year >{{year}} </option>
         </select>
+        <select name="genre" id="genre" v-model="gender"  @change="$emit('genere',gender)">
+            <option disabled value="">Scegli il genere</option>
+            <option value="all">All</option>
+            <option v-for="(gender,i) in genre" :key="i" :value=gender >{{gender}} </option>
+        </select>
     </header>
 </template>
 
@@ -13,11 +18,13 @@
 export default {
     props:{
         discs:Array,
-        years:Array
+        years:Array,
+        genre:Array
     },
     data(){
         return{
-            selected:''
+            selected:'',
+            gender:''
         }
     }
 }

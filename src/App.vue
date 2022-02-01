@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <loader-app v-if="loading"/>
-    <header-app :years="years" @filter="filterCards"/>
-    <main-app :discs="discs" :valueUser="valueUser" />
+    <header-app 
+    :years="years" 
+    @filter="filterCards"
+    @genere="filterGenre"
+    :genre="genre"/>
+    <main-app :discs="discs" :valueUser="valueUser" 
+    :genreUser="genreUser"
+    :genre="genre" />
   </div>
 </template>
 
@@ -23,8 +29,9 @@ export default {
       discs:[],
       loading:true,
       years:[],
-      yearsFiltered:[],
-      valueUser:0
+      genre:[],
+      valueUser:'',
+      genreUser:''
     }
   },
    mounted(){
@@ -34,7 +41,9 @@ export default {
         for(let i=0;i<this.discs.length;i++){
               if (!this.years.includes(this.discs[i].year)) {
                 this.years.push(this.discs[i].year)
-                this.yearsFiltered.push(this.discs[i].year)
+              }
+              if (!this.genre.includes(this.discs[i].genre)) {
+                this.genre.push(this.discs[i].genre)
               }
         }
         this.loading=false;
@@ -45,8 +54,13 @@ export default {
   methods:{
     filterCards(selected){
       this.valueUser=selected
-    }
+    },
+     filterGenre(gender){
+    this.genreUser=gender
+    console.log(gender)
   }
+  },
+ 
 }
 </script>
 

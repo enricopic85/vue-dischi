@@ -3,6 +3,8 @@
         <card-app v-for="(disc,i) in discs" 
         :key="i"
         :disco="disc"
+        :genre="genre"
+        :genreUser="genreUser"
         :valueUser="valueUser"/>
     </div>
 </template>
@@ -13,7 +15,9 @@ export default {
   components: { CardApp },
     props:{
         discs: Array,
-        valueUser:Number
+        valueUser:String,
+        genre:Array,
+        genreUser:String
     },
    
 }

@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="card-app" v-if="valueUser===disco.year || valueUser==='all'">
+        <div class="card-app" v-if="valueUser===disco.year || valueUser==='all' 
+            || genreUser===disco.genre || genreUser==='all'">
             <div class="img">
                 <img :src="disco.poster" alt="">
             </div>
@@ -16,7 +17,9 @@ export default {
     props:{
         disco:Object,
         years:Array,
-        valueUser:Number
+        valueUser:String,
+        genre:Array,
+        genreUser:String
     }
 }
 </script>
