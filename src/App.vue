@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <loader-app v-if="loading"/>
-    <header-app />
-    <main-app :discs="discs" />
+    <header-app :years="years"/>
+    <main-app :discs="discs"  />
   </div>
 </template>
 
@@ -21,13 +21,19 @@ export default {
   data(){
     return{
       discs:[],
-      loading:true
+      loading:true,
+      years:[]
     }
   },
    mounted(){
      setTimeout(() => {
        axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((response)=>{
         this.discs=response.data.response;
+        for(let i=0;i<this.discs.length;i++){
+              if (!this.years.includes(this.discs[i].year)) {
+                this.years.push(this.discs[i].year)
+              }
+        }
         this.loading=false;
     })
      }, 3000);

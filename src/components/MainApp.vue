@@ -12,7 +12,8 @@ export default {
   components: { CardApp },
     props:{
         discs: Array
-    }
+    },
+   
 }
 </script>
 
