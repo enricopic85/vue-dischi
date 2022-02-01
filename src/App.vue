@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <loader-app v-if="loading"/>
-    <header-app :years="years" @search="filterCards"/>
-    <main-app :discs="discs"  />
+    <header-app :years="years" @filter="filterCards"/>
+    <main-app :discs="discs"/>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
       discs:[],
       loading:true,
       years:[],
-      yearsFiltered:[]
+      yearsFiltered:[],
     }
   },
    mounted(){
@@ -33,6 +33,7 @@ export default {
         for(let i=0;i<this.discs.length;i++){
               if (!this.years.includes(this.discs[i].year)) {
                 this.years.push(this.discs[i].year)
+                this.yearsFiltered.push(this.discs[i].year)
               }
         }
         this.loading=false;
@@ -41,8 +42,8 @@ export default {
     
   },
   methods:{
-    filterCards(){
-
+    filterCards(loading){
+      console.log(loading)
     }
   }
 }
