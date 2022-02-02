@@ -3,10 +3,10 @@
     <loader-app v-if="loading"/>
     <header-app 
     :years="years" 
-    @filter="filterCards"
-    @genere="filterGenre"
+    @filter="filterDisc"
     :genre="genre"/>
-    <main-app :discs="discs" :valueUser="valueUser" 
+    <main-app :discs="filtered" 
+    :valueUser="valueUser" 
     :genreUser="genreUser"
     :genre="genre" />
   </div>
@@ -28,16 +28,15 @@ export default {
     return{
       discs:[],
       loading:true,
-      years:[],
       genre:[],
-      valueUser:'',
-      genreUser:''
+      filtered:[]
     }
   },
    mounted(){
      setTimeout(() => {
        axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((response)=>{
         this.discs=response.data.response;
+        this.filtered=response.data.response
         for(let i=0;i<this.discs.length;i++){
               if (!this.years.includes(this.discs[i].year)) {
                 this.years.push(this.discs[i].year)
@@ -52,13 +51,11 @@ export default {
     
   },
   methods:{
-    filterCards(selected){
-      this.valueUser=selected
-    },
-     filterGenre(gender){
-    this.genreUser=gender
-    console.log(gender)
-  }
+   filterDisc(genere){
+     this.filtered=this.discs.filter((disc)=>{
+        return disc.genre.toLowerCase()===genere.toLowerCase() || genere==="all";
+     })
+   }
   },
  
 }

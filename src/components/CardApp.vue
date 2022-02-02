@@ -1,7 +1,8 @@
 <template>
     <div>
-        <div class="card-app" v-if="valueUser===disco.year || valueUser==='all' 
-            || genreUser===disco.genre || genreUser==='all'">
+        <!-- <div class="card-app" v-if="valueUser===disco.year || valueUser==='all' 
+            || genreUser===disco.genre || genreUser==='all'"> -->
+        <div class="card-app" >
             <div class="img">
                 <img :src="disco.poster" alt="">
             </div>

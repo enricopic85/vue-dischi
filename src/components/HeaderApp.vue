@@ -1,15 +1,10 @@
 <template>
     <header>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png" alt="">
-         <select name="year" id="year" v-model="selected"  @change="$emit('filter',selected)">
+         <select name="year" id="year" v-model="genere"  @change="$emit('filter',genere)">
             <option disabled value="">Scegli l'anno di pubblicazione</option>
-            <option value="all">All</option>
-            <option v-for="(year,i) in years" :key="i" :value=year >{{year}} </option>
-        </select>
-        <select name="genre" id="genre" v-model="gender"  @change="$emit('genere',gender)">
-            <option disabled value="">Scegli il genere</option>
-            <option value="all">All</option>
-            <option v-for="(gender,i) in genre" :key="i" :value=gender >{{gender}} </option>
+            <option value="all">all</option>
+            <option v-for="(gen,i) in genre" :key="i" :value=gen >{{gen}} </option>
         </select>
     </header>
 </template>
@@ -23,8 +18,7 @@ export default {
     },
     data(){
         return{
-            selected:'',
-            gender:''
+            genere:''
         }
     }
 }
