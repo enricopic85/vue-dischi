@@ -38,9 +38,6 @@ export default {
         this.discs=response.data.response;
         this.filtered=response.data.response
         for(let i=0;i<this.discs.length;i++){
-              if (!this.years.includes(this.discs[i].year)) {
-                this.years.push(this.discs[i].year)
-              }
               if (!this.genre.includes(this.discs[i].genre)) {
                 this.genre.push(this.discs[i].genre)
               }
